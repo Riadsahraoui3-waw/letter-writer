@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: block;
+            display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -20,6 +20,8 @@
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             width: 400px;
+            height: 400px; /* Set a fixed height */
+            overflow: auto; /* Enable scrolling if the letter content is too long */
         }
         .form-group {
             margin-bottom: 20px;
@@ -32,13 +34,6 @@
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
-        }
-        .form-group textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            height: 200px;
-            margin-top: 10px;
         }
         .btn {
             padding: 10px 15px;
@@ -70,28 +65,28 @@
 <div class="container hidden" id="letter-section">
     <h2>Your Letter</h2>
     <textarea readonly>
-        My love imen ,
+        My love imen,
 
-As another year dawns, my heart overflows with joy and gratitude for having you in my life. Even though the miles may separate us, the connection we share transcends physical distance.
+        As another year dawns, my heart overflows with joy and gratitude for having you in my life. Even though the miles may separate us, the connection we share transcends physical distance.
 
-Your laughter, your kindness, and your unwavering support have been the brightest stars in my universe. Your words inspire me, your spirit lifts me, and your love warms my soul.
+        Your laughter, your kindness, and your unwavering support have been the brightest stars in my universe. Your words inspire me, your spirit lifts me, and your love warms my soul.
 
-On this special day, I want to remind you of how much you mean to me. You are my everything – my guiding light, my constant companion, and the love of my life.
+        On this special day, I want to remind you of how much you mean to me. You are my everything – my guiding light, my constant companion, and the love of my life.
 
-Happy Birthday, my love. May this year be filled with endless happiness, love, and all the wonderful things you deserve. I can't wait for the day we can finally be together in person, but until then, know that my love for you grows stronger with each passing day.
+        Happy Birthday, my love. May this year be filled with endless happiness, love, and all the wonderful things you deserve. I can't wait for the day we can finally be together in person, but until then, know that my love for you grows stronger with each passing day.
 
-With all my love,
-sahraoui brahim riad 
+        With all my love,
+        sahraoui brahim riad
     </textarea>
 </div>
 
 <script>
-    const correctPassword = 'macdemarco';  // Set your password here
+    const correctPassword = 'macdemarco'; // Set your password here
 
     function checkPassword() {
         const enteredPassword = document.getElementById('password').value;
         const errorMessage = document.getElementById('error-message');
-        
+
         if (enteredPassword === correctPassword) {
             document.getElementById('login-section').classList.add('hidden');
             document.getElementById('letter-section').classList.remove('hidden');
