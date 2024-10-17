@@ -28,13 +28,17 @@
             display: block;
             margin-bottom: 5px;
         }
-        .form-group input, .form-group textarea {
+        .form-group input {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
         }
         .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
             height: 200px;
+            margin-top: 10px;
         }
         .btn {
             padding: 10px 15px;
@@ -46,9 +50,6 @@
         .btn:disabled {
             background-color: #ccc;
         }
-        .error {
-            color: red;
-        }
         .hidden {
             display: none;
         }
@@ -57,34 +58,36 @@
 <body>
 
 <div class="container" id="login-section">
-    <h2>Login</h2>
+    <h2>Enter Password to Read the Letter</h2>
     <div class="form-group">
         <label for="password">Enter Password:</label>
         <input type="password" id="password" placeholder="Password">
     </div>
     <button class="btn" onclick="checkPassword()">Submit</button>
-    <p id="error-message" class="error"></p>
+    <p id="error-message" style="color: red;"></p>
 </div>
 
 <div class="container hidden" id="letter-section">
-    <h2>Write Your Letter</h2>
-    <form id="letter-form">
-        <div class="form-group">
-            <label for="letter">Your Letter:</label>
-            <textarea id="letter" placeholder="Write your letter here..."></textarea>
-        </div>
-        <button type="button" class="btn" onclick="saveLetter()">Save Letter</button>
-    </form>
-    <br>
-    <button class="btn" onclick="clearLetter()">Clear Letter</button>
-    <div id="saved-message" style="margin-top: 10px; color: green;"></div>
+    <h2>Your Letter</h2>
+    <textarea readonly>
+        My love imen ,
+
+As another year dawns, my heart overflows with joy and gratitude for having you in my life. Even though the miles may separate us, the connection we share transcends physical distance.
+
+Your laughter, your kindness, and your unwavering support have been the brightest stars in my universe. Your words inspire me, your spirit lifts me, and your love warms my soul.
+
+On this special day, I want to remind you of how much you mean to me. You are my everything – my guiding light, my constant companion, and the love of my life.
+
+Happy Birthday, my love. May this year be filled with endless happiness, love, and all the wonderful things you deserve. I can't wait for the day we can finally be together in person, but until then, know that my love for you grows stronger with each passing day.
+
+With all my love,
+sahraoui brahim riad 
+    </textarea>
 </div>
 
 <script>
-    const correctPassword = 'macdemarco';  // Password set here
-    const letterKey = 'savedLetter';
+    const correctPassword = 'macdemarco';  // Set your password here
 
-    // Check password and show the letter section if correct
     function checkPassword() {
         const enteredPassword = document.getElementById('password').value;
         const errorMessage = document.getElementById('error-message');
@@ -92,32 +95,9 @@
         if (enteredPassword === correctPassword) {
             document.getElementById('login-section').classList.add('hidden');
             document.getElementById('letter-section').classList.remove('hidden');
-            loadSavedLetter();  // Load any previously saved letter
         } else {
             errorMessage.textContent = 'Incorrect password. Please try again.';
         }
-    }
-
-    // Save the letter in local storage
-    function saveLetter() {
-        const letterContent = document.getElementById('letter').value;
-        localStorage.setItem(letterKey, letterContent);
-        document.getElementById('saved-message').textContent = 'Letter saved!';
-    }
-
-    // Load saved letter from local storage
-    function loadSavedLetter() {
-        const savedLetter = localStorage.getItem(letterKey);
-        if (savedLetter) {
-            document.getElementById('letter').value = savedLetter;
-        }
-    }
-
-    // Clear the saved letter
-    function clearLetter() {
-        localStorage.removeItem(letterKey);
-        document.getElementById('letter').value = '';
-        document.getElementById('saved-message').textContent = 'Letter cleared!';
     }
 </script>
 
